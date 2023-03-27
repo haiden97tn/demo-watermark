@@ -1,23 +1,25 @@
 import logo from './logo.svg';
 import './App.css';
+import { Watermark } from '@hirohe/react-watermark';
+import avatar from './data/avatar.jpg'
+import nghiaCV from './data/nghia-cv.pdf'
+import DocViewer from '@cyntler/react-doc-viewer';
 
 function App() {
+
+  const docs = [
+    // { uri: "https://url-to-my-pdf.pdf" },
+    { uri: require("./data/sample.pdf") }, // Local File
+  ];
+
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Watermark text="Nguyen Hai">
+        <div style={{ width: "100vw", height: "100vh", backgroundColor: '#5f5f5f', overflow: "hidden" }}>
+          <DocViewer documents={docs} />
+        </div>
+      </Watermark>
     </div>
   );
 }
